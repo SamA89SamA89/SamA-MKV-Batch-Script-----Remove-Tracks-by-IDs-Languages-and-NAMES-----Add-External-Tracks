@@ -46,6 +46,23 @@ the Languages are missing or not unique, like with some commentary tracks.
    • Do the same for the Subs
 
 
+• To Remove All Audio Tracks:
+
+  Replace the value of FINAL_AUDIO on both lines with "-A". So it becomes...
+
+  :FINAL_FLAGS
+  if defined FINAL_AUDIO set "FINAL_AUDIO=-A"
+  if not defined FINAL_AUDIO set "FINAL_AUDIO=-A"
+
+
+• To Remove All Subs Tracks:
+
+  Replace the value of FINAL_SUBS on both lines with "-S". So it becomes...
+   
+  if defined FINAL_SUBS set "FINAL_SUBS=-S"
+  if not defined FINAL_SUBS set "FINAL_SUBS=-S"
+
+
 
 ------------------------------------USE INSTRUCTIONS------------------------------------
 
@@ -70,7 +87,7 @@ the Languages are missing or not unique, like with some commentary tracks.
      If the JSON structure changes in a future version, the parsing logic may need to be updated
    • The Currency Sign ¤ (which is extremely rare) is not used in Track Names.
      If it is used, simply change the delimiter to another rare character
-2) The !MKVMERGE! command at the bottom of the script can be customized to add
-   extra functions, like track ordering, chapter handling, and attachment support. For example:
-   "!MKVMERGE!" -o "!NEW_FILE!" !FINAL_AUDIO! !FINAL_SUBS! "%%e" !ADD_AUDIO! !ADD_SUBS! --track-order 0:2,0:1
+2) The !MKVMERGE! command can be customized to add extra functions,
+   like track ordering, chapter handling, and attachment support. For example:
+   "!MKVMERGE!" -o "!NEW_FILE!" !FINAL_AUDIO! !FINAL_SUBS! "%~1" !ADD_AUDIO! !ADD_SUBS! --track-order 0:2,0:1
 3) Feel free to share or modify the script
